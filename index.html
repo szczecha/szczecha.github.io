@@ -397,6 +397,15 @@
             max-width: 600px;
         }
 
+        .timeline-desc ul {
+            margin: 0.25rem 0 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .timeline-desc ul li {
+            margin-bottom: 0.15rem;
+        }
+
         .timeline-techs {
             display: flex;
             flex-wrap: wrap;
@@ -846,7 +855,7 @@
             <div class="domain-card">
                 <div class="domain-icon">🛒</div>
                 <h4>E-commerce</h4>
-                <p>Saleor — headless, GraphQL-first commerce platform. Orders, checkout, payments, shipping.</p>
+                <p>Saleor — headless, GraphQL-first commerce platform. Payments (Adyen, Stripe, Mollie), taxes (Avatax), orders, checkout, shipping. <br> Frisco — online grocery with home delivery.</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">💳</div>
@@ -856,22 +865,32 @@
             <div class="domain-card">
                 <div class="domain-icon">🏠</div>
                 <h4>IoT / Smart Home</h4>
-                <p>React Native app for iOS & Android — sole QA owning the full testing lifecycle.</p>
+                <p>React Native app for iOS & Android smart home control. Sole QA owning the full testing lifecycle.</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">📦</div>
                 <h4>GS1 / Product Catalog</h4>
-                <p>GTIN/EAN product catalog systems — data integrity and standards compliance.</p>
+                <p>Product catalogs and GTIN number verification systems — data integrity and standards compliance.</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">⚖️</div>
                 <h4>Legal Tech</h4>
-                <p>Document workflows, case management, and note-taking tools for law firms.</p>
+                <p>BigHand — technology solutions for legal professionals. Document workflows, data insights, and tools to increase value and efficiency for law firms.</p>
             </div>
             <div class="domain-card">
                 <div class="domain-icon">🚗</div>
-                <h4>Automotive & CRM</h4>
-                <p>Desktop and web applications for automotive industry and customer relationship management.</p>
+                <h4>Automotive</h4>
+                <p>ERP systems and e-commerce parts catalogs for automotive industry. <br> BMW motorcycle configurator and test ride booking.</p>
+            </div>
+            <div class="domain-card">
+                <div class="domain-icon">🚚</div>
+                <h4>Transport & Logistics</h4>
+                <p>Web application for TLS industry — driver information system for warehouse halls: loading docks, ramp counts, and loading/unloading requirements.</p>
+            </div>
+            <div class="domain-card">
+                <div class="domain-icon">🛡️</div>
+                <h4>Insurance</h4>
+                <p>Agent-facing application for insurance sales. Policy simulations, premium calculations, client data management, and document generation (offers, contracts).</p>
             </div>
         </div>
     </div>
@@ -890,9 +909,12 @@
                 <div class="timeline-role">Customer Enablement Engineer</div>
                 <div class="timeline-company">Saleor Commerce · Remote</div>
                 <div class="timeline-desc">
-                    End-to-end client onboarding — live walkthroughs, tutorial recordings, and integration architecture design. 
-                    Pre-sales technical approach documents for enterprise clients. Authored 15+ documentation guides from support signal analysis. 
-                    Primary technical point of contact for day-to-day client questions across API usage, configuration, and third-party integrations.
+                    <ul>
+                        <li>End-to-end client onboarding — live walkthroughs, tutorial recordings, and integration architecture design</li>
+                        <li>Pre-sales technical approach documents for enterprise clients</li>
+                        <li>Led documentation improvement initiative: authored 15+ guides from support signal analysis</li>
+                        <li>Primary technical point of contact for day-to-day client questions across API usage, configuration, and third-party integrations</li>
+                    </ul>
                 </div>
                 <div class="timeline-techs">
                     <span class="timeline-tech">GraphQL</span>
@@ -906,14 +928,23 @@
                 <div class="timeline-role">QA Engineer</div>
                 <div class="timeline-company">Saleor Commerce · Remote</div>
                 <div class="timeline-desc">
-                    Owned quality for an open-source headless commerce platform. Built API regression suites in Pytest, 
-                    E2E tests in Playwright, load tests in Locust. Championed Shift-Left testing, audited CI/CD pipelines, 
-                    designed QA metrics framework from scratch. Set up Datadog observability — dashboards, SLO alerts, runbooks.
+                    Owned quality for an open-source headless commerce platform.
+                    <ul>
+                        <li>Manual and automated testing across UI and GraphQL API</li>
+                        <li>Built API regression suites in Pytest, E2E tests in Playwright, load tests in Locust</li>
+                        <li>Tested payment and tax integration flows end-to-end. Used Bruno and PactumJS for API testing in payment and tax apps</li>
+                        <li>Documented internal testing processes. Created and published Postman collections for API consumers</li>
+                        <li>Championed Shift-Left testing, audited CI/CD pipelines, designed QA metrics framework from scratch</li>
+                        <li>Set up Datadog observability — dashboards, SLO alerts, runbooks</li>
+                    </ul>
                 </div>
                 <div class="timeline-techs">
                     <span class="timeline-tech">Pytest</span>
                     <span class="timeline-tech">Playwright</span>
                     <span class="timeline-tech">Locust</span>
+                    <span class="timeline-tech">Bruno</span>
+                    <span class="timeline-tech">PactumJS</span>
+                    <span class="timeline-tech">Postman</span>
                     <span class="timeline-tech">Datadog</span>
                     <span class="timeline-tech">GitHub Actions</span>
                     <span class="timeline-tech">PostgreSQL</span>
@@ -924,8 +955,9 @@
                 <div class="timeline-role">Quality Assurance Specialist</div>
                 <div class="timeline-company">PGS Software · Remote</div>
                 <div class="timeline-desc">
-                    Manual testing for legal sector — document workflows, note-taking, and case management tools. 
-                    Caught critical document-handling edge cases before production, preventing data loss for law firm clients.
+                    QA for BigHand — technology solutions for legal professionals providing data-driven insights
+                    to increase value and efficiency. 
+                    <br>Tested document workflows, note-taking,  speech to text, and case management tools.
                 </div>
                 <div class="timeline-techs">
                     <span class="timeline-tech">Desktop</span>
@@ -938,9 +970,11 @@
                 <div class="timeline-role">Software Tester</div>
                 <div class="timeline-company">STX Next · Piła / Gdańsk</div>
                 <div class="timeline-desc">
-                    QA across Smart Home IoT, GS1 catalog, and deferred-payments (Vyze / Mastercard). 
-                    Sole QA on the Smart Home project — React Native app on iOS & Android. 
-                    API testing with Postman, requirements refinement with Product Owners.
+                    QA across multiple projects: smart home IoT (React Native, sole QA),
+                    Vyze deferred payments, GS1 product catalogs and GTIN verification,
+                    and a TLS logistics app for warehouse/loading dock information.
+                    
+                    <br>API testing with Postman, requirements refinement with Product Owners.
                 </div>
                 <div class="timeline-techs">
                     <span class="timeline-tech">Postman</span>
@@ -954,8 +988,11 @@
                 <div class="timeline-role">Software Tester</div>
                 <div class="timeline-company">Integra Software · Bloxy · Witchcraft Studios</div>
                 <div class="timeline-desc">
-                    Sole QA across three companies — independently owned testing for automotive, CRM, social, 
-                    and mobile applications. Built test processes from scratch: test case design, defect reporting, documentation.
+                    Sole QA across three companies. Integra — ERP and e-commerce parts catalogs for automotive.
+                    Bloxy — social media messenger app for young users (iOS & Android).
+                    Witchcraft Studios — mobile apps including BMW motorcycle configurator, app for river navigation,
+                    Frisco online grocery, app for insurance sales.
+                    <br>Built test processes from scratch: test case design, defect reporting, documentation.
                 </div>
                 <div class="timeline-techs">
                     <span class="timeline-tech">iOS</span>
@@ -982,7 +1019,6 @@
                     <span class="skill-item">Playwright</span>
                     <span class="skill-item">Pytest</span>
                     <span class="skill-item">PactumJS</span>
-                    <span class="skill-item">Cypress</span>
                     <span class="skill-item">Locust</span>
                 </div>
             </div>
@@ -994,7 +1030,6 @@
                     <span class="skill-item">Webhooks</span>
                     <span class="skill-item">Postman</span>
                     <span class="skill-item">Bruno</span>
-                    <span class="skill-item">PostgreSQL</span>
                 </div>
             </div>
             <div class="skill-group">
@@ -1002,7 +1037,6 @@
                 <div class="skill-items">
                     <span class="skill-item">Datadog</span>
                     <span class="skill-item">Kibana</span>
-                    <span class="skill-item">APM</span>
                     <span class="skill-item">Sentry</span>
                     <span class="skill-item">SLO Alerts</span>
                 </div>
@@ -1051,6 +1085,12 @@
                     <span class="skill-item">MantisBT</span>
                 </div>
             </div>
+            <div class="skill-group">
+                <h4>Databases</h4>
+                <div class="skill-items">
+                    <span class="skill-item">PostgreSQL</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1062,19 +1102,6 @@
     <div class="fade-in">
         <span class="section-label">Education & courses</span>
         <h2 class="section-title">Learning path</h2>
-        <div class="edu-grid">
-            <div class="edu-card">
-                <div class="edu-year">2011 — 2017</div>
-                <h4>BSc Computer Engineering</h4>
-                <p>Rzeszów University of Technology</p>
-                <p style="margin-top: 0.25rem; font-size: 0.8rem; color: var(--muted-light);">Specialty: Information Technology in Enterprise</p>
-            </div>
-            <div class="edu-card" style="display: flex; flex-direction: column; justify-content: center;">
-                <div class="edu-year">Languages</div>
-                <h4>Polish <span style="font-weight: 400; color: var(--muted); font-family: var(--sans); font-size: 0.85rem;">— native</span></h4>
-                <h4 style="margin-top: 0.3rem;">English <span style="font-weight: 400; color: var(--muted); font-family: var(--sans); font-size: 0.85rem;">— communicative (B2)</span></h4>
-            </div>
-        </div>
         <div class="courses-list">
             <div class="course-item">
                 <span class="course-year">2026</span>
@@ -1104,6 +1131,19 @@
                     <p>testerzy.pl · HTTP, HTML, CSS, XML, web testing tools</p>
                 </div>
             </div>
+            <div class="edu-grid">
+            <div class="edu-card">
+                <div class="edu-year">2011 — 2017</div>
+                <h4>BSc Computer Engineering</h4>
+                <p>Rzeszów University of Technology</p>
+                <p style="margin-top: 0.25rem; font-size: 0.8rem; color: var(--muted-light);">Specialty: Information Technology in Enterprise</p>
+            </div>
+            <div class="edu-card" style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="edu-year">Languages</div>
+                <h4>Polish <span style="font-weight: 400; color: var(--muted); font-family: var(--sans); font-size: 0.85rem;">— native</span></h4>
+                <h4 style="margin-top: 0.3rem;">English <span style="font-weight: 400; color: var(--muted); font-family: var(--sans); font-size: 0.85rem;">— communicative (B2)</span></h4>
+            </div>
+        </div>
         </div>
     </div>
 </section>
@@ -1161,8 +1201,8 @@
                 <div class="project-info">
                     <h4>Saleor Dashboard — UI Contributions</h4>
                     <p>
-                        Contributions to Saleor's GraphQL-powered single-page dashboard application — 
-                        bug fixes, test coverage, and UX improvements.
+                        Contributions to Saleor's GraphQL-powered dashboard application — 
+                        increasing test coverage, fixing flaky tests, and resolving CI/CD issues.
                     </p>
                 </div>
                 <a class="project-link" href="https://github.com/saleor/saleor-dashboard/pulls?q=is%3Apr+author%3Aszczecha+is%3Aclosed" target="_blank" rel="noopener">
@@ -1189,7 +1229,7 @@
                 <h4>Mountains & Outdoors</h4>
                 <p>
                     Hiking towards the Crown of Polish Mountains. Kayaking rivers, cycling, and rollerblading. 
-                    Active life in fresh air is non-negotiable.
+                    <br><br>Active life in fresh air is non-negotiable.
                 </p>
             </div>
             <div class="hobby-card">
@@ -1197,7 +1237,7 @@
                 <h4>Plants & Bamboo Garden</h4>
                 <p>
                     Houseplant collector — sansevieria, philodendron, epipremnum varieties. 
-                    Garden with clumping, timber, and ground-cover bamboos. Love the sound of their leaves.
+                    <br><br>Garden with different bamboos. Love the sound of their leaves.
                 </p>
             </div>
             <div class="hobby-card">
@@ -1205,15 +1245,7 @@
                 <h4>Italian Cooking</h4>
                 <p>
                     Classic Italian — carbonara, amatriciana, ragù alla bolognese. 
-                    Sourdough bread baking — fermentation, timing, observing the process.
-                </p>
-            </div>
-            <div class="hobby-card">
-                <div class="hobby-icon">✈️</div>
-                <h4>Travel</h4>
-                <p>
-                    Chasing sun in autumn and winter — Tenerife, Madeira, Greek islands (Rhodes, Kos). 
-                    Always focused on local food and culture, never ticking off tourist lists.
+                    <br><br>Sourdough bread baking.
                 </p>
             </div>
             <div class="hobby-card">

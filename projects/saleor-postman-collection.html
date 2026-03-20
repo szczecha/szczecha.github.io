@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saleor Postman Collection — Anna Szczęch</title>
+    <meta name="description" content="Detailed overview of the Saleor Postman Collection project by Anna Szczęch.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #f6f3ee;
+            --paper-warm: #ede8df;
+            --accent: #c45d3e;
+            --accent-soft: #e8a48e;
+            --accent-bg: #fdf0eb;
+            --muted: #7a7568;
+            --muted-light: #b5ae9f;
+            --border: #d9d3c7;
+            --white: #ffffff;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 17px;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.65;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(246, 243, 238, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        nav .nav-name {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .back-link {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--accent); }
+
+        /* ─── PROJECT HERO ─── */
+        .project-hero {
+            padding: 7rem 2rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-hero .label {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .project-hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-hero .project-summary {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .meta-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted-light);
+        }
+
+        .meta-value {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            background: var(--paper-warm);
+            padding: 0.25rem 0.7rem;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            border: 1.5px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: #b05236;
+            border-color: #b05236;
+        }
+
+        .btn-secondary {
+            color: var(--ink);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-bg);
+        }
+
+        /* ─── CONTENT SECTIONS ─── */
+        .project-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .content-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .content-section h2 {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .content-section h3 {
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .content-section h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-section p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul li {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 0.4rem;
+        }
+
+        /* ─── MEDIA: IMAGES ─── */
+        .media-grid {
+            display: grid;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .media-grid.single {
+            grid-template-columns: 1fr;
+        }
+
+        .media-grid.two-col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .media-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .media-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Size variants — add class to .media-grid */
+        .media-grid.small { max-width: 200px; }
+        .media-grid.medium { max-width: 400px; }
+        /* default (no class) = full width (900px) */
+
+        .media-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .media-caption {
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ─── HIGHLIGHT BOX ─── */
+        .highlight-box {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-soft);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.9rem;
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .highlight-box ul {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .highlight-box ul li {
+            font-size: 0.88rem;
+            color: var(--ink);
+            line-height: 1.7;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem 2.5rem;
+            border-top: 1px solid var(--border);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        footer .footer-name {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer .footer-links a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer .footer-links a:hover { color: var(--accent); }
+
+        footer .footer-copy {
+            font-size: 0.75rem;
+            color: var(--muted-light);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            html { font-size: 15px; }
+            .project-hero { padding: 5rem 1.25rem 2rem; }
+            .project-content { padding: 0 1.25rem 3rem; }
+            .media-grid.two-col { grid-template-columns: 1fr; }
+            .project-meta { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-name">A.Sz.</a>
+        <a href="../index.html#projects" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            Back to Portfolio
+        </a>
+    </div>
+</nav>
+
+<!-- PROJECT HERO -->
+<header class="project-hero">
+    <span class="label">Project</span>
+    <h1>Saleor Postman Collection</h1>
+    <p class="project-summary">
+        What started as my personal testing shortcut grew into Saleor's official public API collection —
+        now listed on Postman's public directory and used by developers and agencies worldwide
+        to get up and running with the Saleor GraphQL API.
+    </p>
+
+    <div class="project-meta">
+        <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Creator & Maintainer</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Company</span>
+            <span class="meta-value">Saleor Commerce</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">2022 — 2024</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">API Testing / Developer Tooling</span>
+        </div>
+    </div>
+
+    <div class="tech-tags">
+        <span class="tech-tag">Postman</span>
+        <span class="tech-tag">GraphQL</span>
+        <span class="tech-tag">API Testing</span>
+        <span class="tech-tag">Documentation</span>
+    </div>
+
+    <div class="project-links">
+        <a class="btn-primary" href="https://www.postman.com/saleor-official/workspace/saleor/" target="_blank" rel="noopener">
+            View Collection →
+        </a>
+        <a class="btn-secondary" href="../index.html#projects">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            All Projects
+        </a>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<div class="project-content">
+
+    <!-- THE PROBLEM -->
+    <div class="content-section">
+        <h2>The Problem</h2>
+        <p>
+            When I joined Saleor, there was no shared request collection. Everyone used their own tool —
+            Postman, Insomnia, GraphQL Playground — and none of them had a shared, versioned collection.
+            Every developer and QA was building requests from scratch, duplicating effort, and there was
+            no single source of truth for how to call the API correctly.
+        </p>
+    </div>
+
+    <!-- HOW IT STARTED -->
+    <div class="content-section">
+        <h2>How It Started</h2>
+
+        <h3>From Repetitive Requests to Organized Flows</h3>
+        <p>
+            While learning the API — new mutations, new queries — I kept sending the same requests over and over.
+            So I started organizing them: putting related requests in sequence inside folders, each one representing
+            a complete checkout flow.
+        </p>
+        <p>
+            Pretty quickly I had folders for different scenarios: a common checkout, checkout with a voucher,
+            for digital products, with different payment methods, with different shipping addresses.
+            I could use the Postman Collection Runner to execute an entire folder at once, multiple times,
+            and instantly have orders to work with.
+        </p>
+
+        <div class="media-grid single">
+            <div class="media-item">
+                <img src="../images/collections.png" alt="Collection folder structure showing different checkout flows">
+                <div class="media-caption">Collection organized by checkout flows — each folder is a runnable scenario</div>
+            </div>
+        </div>
+
+        <h3>Scripts & Environments</h3>
+        <p>
+            All requests were configured with pre-request and post-request scripts — extracting IDs,
+            chaining tokens between steps, using dynamic variables for email addresses.
+            I created multiple environments so I could effectively switch between staging, production,
+            and local instances with one click.
+        </p>
+        <div class="media-grid single">
+            <div class="media-item">
+                <img src="../images/envVariables.png" alt="Environment variables configuration in Postman">
+                <div class="media-caption">Environment variables for switching between staging, production, and local instances</div>
+            </div>
+        </div>
+        <div class="media-grid single">
+            <div class="media-item">
+                <img src="../images/postResponseScript.png" alt="Post-response script extracting data from API response">
+                <div class="media-caption">Post-response script extracting data from API response</div>
+            </div>
+        </div>
+
+        <h3>Flows</h3>
+        <p>
+            Next I discovered Postman Flows and created several. It was easier to manipulate
+            and change variables in a single visual view, and run entire sequences with one click.
+        </p>
+
+        <div class="media-grid single">
+            <div class="media-item">
+                <img src="../images/flowExample.png" alt="Postman Flow for checkout sequence">
+                <div class="media-caption">Postman Flow — visual orchestration of a checkout sequence</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADOPTION -->
+    <div class="content-section">
+        <h2>Internal Adoption</h2>
+        <p>
+            At this point I showed the collection in a company demo and a few developers started using it right away.
+        </p>
+        <p>
+            I also created a smoke test suite during functional testing of new mutations.
+            We ran it before releases to make sure all critical paths worked as expected.
+        </p>
+    </div>
+
+    <!-- GOING PUBLIC -->
+    <div class="content-section">
+        <h2>Going Public</h2>
+        <p>
+            Then a colleague shared an idea: Postman has a public directory of API collections
+            where developers can discover ready-to-use examples. Why not publish ours there?
+        </p>
+        <div class="highlight-box">
+            <h4>The Pitch</h4>
+            <ul>
+                <li>Low-hanging fruit — the collection already existed</li>
+                <li>Developers and agencies could find Saleor ready-to-use examples, complementing docs and playgrounds</li>
+                <li>Increased Saleor visibility in the Postman ecosystem</li>
+                <li>Built-in support for scripts and tests — a DX improvement out of the box</li>
+            </ul>
+        </div>
+        <p>
+            After a cleanup pass and a security review to make sure no passwords or secrets leaked
+            through environment variables, we published it as the official Saleor collection.
+        </p>
+    </div>
+
+    <!-- DEMO -->
+    <div class="content-section">
+        <h2>Demo</h2>
+
+        <div class="media-grid single">
+            <div class="media-item">
+                <video controls poster="../images/flowPoster.png">
+                    <source src="../images/flow.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="media-caption">Walkthrough: Running a checkout flow end-to-end</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div class="content-section">
+        <h2>Impact</h2>
+        <div class="highlight-box">
+            <h4>Key Results</h4>
+            <ul>
+                <li>Listed on Postman's Public API Network — discoverable by anyone</li>
+                <li>Adopted by external developers and integration partners worldwide</li>
+                <li>Reduced time-to-first-API-call for new Saleor users</li>
+                <li>Confirmed via Postman's 2025 Rewind that the collection has active, ongoing usage</li>
+            </ul>
+        </div>
+        <p>
+            The collection isn't something we actively update on a schedule — but it's alive.
+            Sometimes I spot a comment on Discord that the collection is missing a particular mutation,
+            and I add it. It's community-driven maintenance at a low but steady pace.
+        </p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-name">Anna Szczęch</div>
+    <div class="footer-links">
+        <a href="mailto:anna.m.szczech@gmail.com">anna.m.szczech@gmail.com</a>
+        <a href="https://github.com/szczecha" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/annaszczech" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-copy">Built with care · 2026</div>
+</footer>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ featured: true
   <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Documentation</span>
 </div>
 
-[View Collection →](https://www.postman.com/saleor-official/workspace/saleor/)
+<a href="https://www.postman.com/saleor-official/workspace/saleor/" target="_blank" rel="noopener noreferrer">View Collection →</a>
 
 ---
 

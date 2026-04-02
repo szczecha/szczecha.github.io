@@ -23,6 +23,7 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@iconify-json/heroicons": "^1.2.2",
     "@playwright/test": "^1.59.1",
     "@tailwindcss/typography": "^0.5.16",

@@ -2,13 +2,15 @@
 import { Icon } from "astro-icon/components";
 const projects = [
 	{
+		icon: "📮",
 		title: "Saleor Postman Collection",
 		description:
 			"Built originally for my own testing needs, then published to the community. Now used daily by developers worldwide — reduces time-to-first-API-call and accelerates integrations at scale.",
-		link: "/projects/saleor-postman-collection",
+		link: "/blog/saleor-postman-collection",
 		linkText: "View Details",
 	},
 	{
+		icon: "📝",
 		title: "Saleor Documentation",
 		description:
 			"Led a documentation initiative targeting highest-priority gaps from real customer questions. Covers orders lifecycle, warehouse & shipping, bulk API operations, webhook troubleshooting, content modeling, and cloud environment management.",
@@ -17,6 +19,7 @@ const projects = [
 		external: true,
 	},
 	{
+		icon: "🧪",
 		title: "Saleor Core — Test & Quality Contributions",
 		description:
 			"API regression tests, sample database overhaul with richer product attributes and Transaction API coverage, and quality improvements to the core commerce platform.",
@@ -25,6 +28,7 @@ const projects = [
 		external: true,
 	},
 	{
+		icon: "🖥️",
 		title: "Saleor Dashboard — UI Contributions",
 		description:
 			"Contributions to Saleor's GraphQL-powered dashboard application — increasing test coverage, fixing flaky tests, and resolving CI/CD issues.",
@@ -41,6 +45,7 @@ const projects = [
 	{
 		projects.map((project, index) => (
 			<div class="flex flex-col space-y-5 text-sm relative group">
+				{project.icon && <div class="text-3xl">{project.icon}</div>}
 				<h2 class="font-semibold text-lg mb-2 ">
 					<div class="absolute -inset-x-3 md:-inset-x-5 -inset-y-4 rounded-lg opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 bg-slate-50 z-0 transition dark:bg-slate-800" />
 					<a href={project.link} target={project.external ? "_blank" : undefined} rel={project.external ? "noopener" : undefined}>

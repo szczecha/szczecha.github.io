@@ -5,56 +5,75 @@ const timeline = [
 		date: "Apr 2025 — Present",
 		role: "Customer Enablement Engineer",
 		location: "Saleor Commerce · Remote",
-		description:
-			"End-to-end client onboarding — live walkthroughs, tutorial recordings, and integration architecture design. Pre-sales technical approach documents for enterprise clients. Led documentation improvement initiative: authored 15+ guides from support signal analysis. Built proof-of-concept applications for clients using Claude Code and LLMs to accelerate evaluation and demonstrate integration potential. Primary technical point of contact for day-to-day client questions across API usage, configuration, and third-party integrations.",
+		description: [
+			"End-to-end client onboarding — live walkthroughs, tutorial recordings, and integration architecture design.",
+			"Pre-sales technical approach documents for enterprise clients.",
+			"Led documentation improvement initiative: authored 15+ guides from support signal analysis.",
+			"Built proof-of-concept applications for clients using Claude Code and LLMs to accelerate evaluation and demonstrate integration potential.",
+			"Primary technical point of contact for day-to-day client questions across API usage, configuration, and third-party integrations.",
+		],
 		techs: ["Docusaurus", "Figma", "Linear", "Plain", "LLMs", "Claude Code"]
 	},
 	{
 		date: "Mar 2022 — Apr 2025",
 		role: "QA Engineer",
 		location: "Saleor Commerce · Remote",
-		description:
-			"Owned quality for an open-source headless commerce platform. Manual and automated testing across UI and GraphQL API. Built API regression suites in Pytest, E2E tests in Playwright, load tests in Locust. Tested payment and tax integration flows end-to-end. Documented internal testing processes and published Postman collections for API consumers. Championed Shift-Left testing, audited CI/CD pipelines, designed QA metrics framework from scratch. Set up Datadog observability — dashboards, SLO alerts, runbooks.",
+		description: [
+			"Owned quality for an open-source headless commerce platform. Manual and automated testing across UI and GraphQL API.",
+			"Built API regression suites in Pytest, E2E tests in Playwright, load tests in Locust.",
+			"Tested payment and tax integration flows end-to-end. Documented internal testing processes and published Postman collections for API consumers.",
+			"Championed Shift-Left testing, audited CI/CD pipelines, designed QA metrics framework from scratch.",
+			"Set up Datadog observability — dashboards, SLO alerts, runbooks.",
+		],
 		techs: ["Playwright", "Pytest", "Locust",  "Postman", "Bruno", "PactumJS", "Datadog", "GitHub Actions", "PostgreSQL", "Linear", "GraphQL"],
 	},
 	{
 		date: "Apr 2021 — Feb 2022",
 		role: "Quality Assurance Specialist",
 		location: "PGS Software · Remote",
-		description:
-			"QA for BigHand — technology solutions for legal professionals providing data-driven insights to increase value and efficiency. Tested document workflows, note-taking, speech to text, and case management tools.",
+		description: [
+			"QA for BigHand — technology solutions for legal professionals providing data-driven insights to increase value and efficiency.",
+			"Tested document workflows, note-taking, speech to text, and case management tools.",
+		],
 		techs: ["Desktop", "Web", "Mobile", "Azure DevOps"],
 	},
 	{
 		date: "Aug 2017 — Mar 2021",
 		role: "Software Tester",
 		location: "STX Next · Piła / Gdańsk",
-		description:
-			"QA across multiple projects: smart home IoT (React Native, sole QA), Vyze deferred payments, GS1 product catalogs and GTIN verification, and a TLS logistics app for warehouse/loading dock information. API testing with Postman, requirements refinement with Product Owners.",
+		description: [
+			"QA across multiple projects: smart home IoT (React Native, sole QA), Vyze deferred payments, GS1 product catalogs and GTIN verification, and a TLS logistics app for warehouse/loading dock information.",
+			"API testing with Postman, requirements refinement with Product Owners.",
+		],
 		techs: ["Postman", "JIRA", "Confluence", "Kibana", "GitHub"],
 	},
 	{
 		date: "Nov 2016 — Jul 2017",
 		role: "Software Tester & Helpdesk Employee",
 		location: "Integra Software · Koszalin",
-		description:
-			"Manual testing of desktop and web (PWA) applications for the automotive industry. Regression, exploratory and performance testing. Customer technical support. Project: application for car services and car parts catalog.",
+		description: [
+			"Manual testing of desktop and web (PWA) applications for the automotive industry. Regression, exploratory and performance testing.",
+			"Customer technical support. Project: application for car services and car parts catalog.",
+		],
 		techs: ["jMeter", "Ranorex", "Windows", "Web", "Desktop"],
 	},
 	{
 		date: "Jul 2016 — Oct 2016",
 		role: "Software Tester",
 		location: "Bloxy · Koszalin",
-		description:
+		description: [
 			"Manual testing of a social media communicator for teenagers. Manual, regression, exploratory and acceptance testing of the mobile application.",
+		],
 		techs: ["Xcode", "Android Studio", "Charles Proxy"],
 	},
 	{
 		date: "Feb 2015 — Jun 2016",
 		role: "Software Tester",
 		location: "Witchcraft Studios · Rzeszów",
-		description:
-			"Manual testing of web and mobile applications — CRM systems, home grocery shopping apps, automotive applications (including BMW motorcycle configurator and Frisco online grocery). Wrote and executed test cases, reported defects, prepared documentation, and created user guides.",
+		description: [
+			"Manual testing of web and mobile applications — CRM systems, home grocery shopping apps, automotive applications (including BMW motorcycle configurator and Frisco online grocery).",
+			"Wrote and executed test cases, reported defects, prepared documentation, and created user guides.",
+		],
 		techs: ["Web", "Mobile", "TestRail", "Mantis Bug Tracker"],
 	},
 ];
@@ -71,7 +90,11 @@ const timeline = [
 						<Icon name="heroicons:map-pin" />
 						<span>{item.location}</span>
 					</div>
-					<div>{item.description}</div>
+					<ul class="space-y-1 list-disc list-outside pl-4 text-slate-700 dark:text-slate-300">
+						{item.description.map((line) => (
+							<li>{line}</li>
+						))}
+					</ul>
 					{item.techs && (
 						<div class="flex flex-wrap gap-2 mt-1">
 							{item.techs.map((tech) => (

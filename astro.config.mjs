@@ -17,7 +17,7 @@ const disableImageOptimization = process.env.NODE_ENV === "development";
 // https://astro.build/config
 export default defineConfig({
 	trailingSlash: "never",
-	site: "https://example.com",
+	site: "https://szczecha.github.io",
 	vite: {
 		plugins: [tailwindcss()],
 	},

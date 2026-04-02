@@ -22,10 +22,10 @@ test.describe("Navigation & Header", () => {
 		await page.goto("/");
 
 		const homeLink = page.locator("#main-header nav a").filter({ hasText: "Home" });
-		await expect(homeLink).toHaveClass(/(?:^| )text-primary-500(?:$| )/);
+		await expect(homeLink).toHaveClass(/(?:^| )text-primary-700(?:$| )/);
 
 		const blogLink = page.locator("#main-header nav a").filter({ hasText: "Blog" });
-		await expect(blogLink).not.toHaveClass(/(?:^| )text-primary-500(?:$| )/);
+		await expect(blogLink).not.toHaveClass(/(?:^| )text-primary-700(?:$| )/);
 	});
 
 	test("Active link updates when navigating to /blog", async ({ page }) => {
@@ -33,10 +33,10 @@ test.describe("Navigation & Header", () => {
 		await page.goto("/blog");
 
 		const blogLink = page.locator("#main-header nav a").filter({ hasText: "Blog" });
-		await expect(blogLink).toHaveClass(/(?:^| )text-primary-500(?:$| )/);
+		await expect(blogLink).toHaveClass(/(?:^| )text-primary-700(?:$| )/);
 
 		const homeLink = page.locator("#main-header nav a").filter({ hasText: "Home" });
-		await expect(homeLink).not.toHaveClass(/(?:^| )text-primary-500(?:$| )/);
+		await expect(homeLink).not.toHaveClass(/(?:^| )text-primary-700(?:$| )/);
 	});
 
 	test("Logo ASz navigates to home", async ({ page }) => {

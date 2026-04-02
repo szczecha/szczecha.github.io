@@ -7,17 +7,17 @@ featured: true
 ---
 
 <div style="display:flex;gap:3rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.25rem;">Role</div><strong>Creator &amp; Maintainer</strong></div>
-  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.25rem;">Company</div><strong>Saleor Commerce</strong></div>
-  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.25rem;">Timeline</div><strong>2022 — 2024</strong></div>
-  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.5;margin-bottom:0.25rem;">Type</div><strong>API Testing / Developer Tooling</strong></div>
+  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta-label-color);margin-bottom:0.25rem;">Role</div><strong>Creator &amp; Maintainer</strong></div>
+  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta-label-color);margin-bottom:0.25rem;">Company</div><strong>Saleor Commerce</strong></div>
+  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta-label-color);margin-bottom:0.25rem;">Timeline</div><strong>2022 — 2024</strong></div>
+  <div><div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--meta-label-color);margin-bottom:0.25rem;">Type</div><strong>API Testing / Developer Tooling</strong></div>
 </div>
 
 <div class="not-prose flex flex-wrap gap-1.5 mb-6">
-  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Postman</span>
-  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">GraphQL</span>
-  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">API Testing</span>
-  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Documentation</span>
+  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Postman</span>
+  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">GraphQL</span>
+  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">API Testing</span>
+  <span class="font-mono text-xs px-3 py-1 rounded bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Documentation</span>
 </div>
 
 <a href="https://www.postman.com/saleor-official/workspace/saleor/" target="_blank" rel="noopener noreferrer">View Collection →</a>

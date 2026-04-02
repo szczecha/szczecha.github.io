@@ -31,7 +31,7 @@ const navItems = [
 								<li>
 									<a
 										href={item.href}
-										class={`relative flex items-center h-full hover:text-primary-500 transition ${item.active ? "text-primary-500" : ""}`}
+										class={`relative flex items-center h-full hover:text-primary-700 dark:hover:text-primary-300 transition ${item.active ? "text-primary-700 dark:text-primary-300" : ""}`}
 									>
 										{item.text}
 										{item.active && (
@@ -84,7 +84,7 @@ const navItems = [
 					navItems.map((item) => (
 						<li>
 							<a
-								class={`block py-3 ${item.active ? "text-primary-500" : ""}`}
+								class={`block py-3 ${item.active ? "text-primary-700 dark:text-primary-300" : ""}`}
 								href={item.href}
 							>
 								{item.text}

@@ -58,28 +58,28 @@ const description = "QA Engineer & Customer Enablement Specialist — 10+ years 
 				</h2>
 				<div class="space-y-4 mb-10">
 					<div class="flex items-start gap-4 p-5 bg-slate-50 dark:bg-slate-800 rounded-xl">
-						<span class="font-mono text-xs text-primary-500 whitespace-nowrap pt-0.5 min-w-[36px]">2026</span>
+						<span class="font-mono text-xs text-primary-700 dark:text-primary-300 whitespace-nowrap pt-0.5 min-w-[36px]">2026</span>
 						<div>
 							<h3 class="font-semibold text-sm mb-1">AI Testers — Accelerate automation with AI</h3>
 							<p class="text-sm text-slate-600 dark:text-slate-400">aitesters.pl · Playwright + AI + MCP · In progress</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-5 bg-slate-50 dark:bg-slate-800 rounded-xl">
-						<span class="font-mono text-xs text-primary-500 whitespace-nowrap pt-0.5 min-w-[36px]">2022</span>
+						<span class="font-mono text-xs text-primary-700 dark:text-primary-300 whitespace-nowrap pt-0.5 min-w-[36px]">2022</span>
 						<div>
 							<h3 class="font-semibold text-sm mb-1">Security in Software Testing</h3>
 							<p class="text-sm text-slate-600 dark:text-slate-400">niebezpiecznik.pl · OWASP Top 10, Burp Suite Professional</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-5 bg-slate-50 dark:bg-slate-800 rounded-xl">
-						<span class="font-mono text-xs text-primary-500 whitespace-nowrap pt-0.5 min-w-[36px]">2020</span>
+						<span class="font-mono text-xs text-primary-700 dark:text-primary-300 whitespace-nowrap pt-0.5 min-w-[36px]">2020</span>
 						<div>
 							<h3 class="font-semibold text-sm mb-1">CI/CD in the Cloud — GitLab CI</h3>
 							<p class="text-sm text-slate-600 dark:text-slate-400">jaktestowac.pl · Building CI pipelines for automated tests</p>
 						</div>
 					</div>
 					<div class="flex items-start gap-4 p-5 bg-slate-50 dark:bg-slate-800 rounded-xl">
-						<span class="font-mono text-xs text-primary-500 whitespace-nowrap pt-0.5 min-w-[36px]">2017</span>
+						<span class="font-mono text-xs text-primary-700 dark:text-primary-300 whitespace-nowrap pt-0.5 min-w-[36px]">2017</span>
 						<div>
 							<h3 class="font-semibold text-sm mb-1">Web Application Testing</h3>
 							<p class="text-sm text-slate-600 dark:text-slate-400">testerzy.pl · HTTP, HTML, CSS, XML, web testing tools</p>
@@ -88,15 +88,15 @@ const description = "QA Engineer & Customer Enablement Specialist — 10+ years 
 				</div>
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 					<div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-xl">
-						<p class="font-mono text-xs text-slate-400 mb-2">2011 — 2017</p>
+						<p class="font-mono text-xs text-slate-600 dark:text-slate-400 mb-2">2011 — 2017</p>
 						<h3 class="font-semibold mb-1">Computer Engineering</h3>
 						<p class="text-sm text-slate-600 dark:text-slate-400">Rzeszów University of Technology</p>
-						<p class="text-xs text-slate-400 mt-1">Specialty: Information Technology in Enterprise</p>
+						<p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Specialty: Information Technology in Enterprise</p>
 					</div>
 					<div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-xl flex flex-col justify-center">
-						<p class="font-mono text-xs text-slate-400 mb-2">Languages</p>
-						<p class="font-semibold">Polish <span class="font-normal text-sm text-slate-500">— native</span></p>
-						<p class="font-semibold mt-1">English <span class="font-normal text-sm text-slate-500">— communicative (B2)</span></p>
+						<p class="font-mono text-xs text-slate-600 dark:text-slate-400 mb-2">Languages</p>
+						<p class="font-semibold">Polish <span class="font-normal text-sm text-slate-500 dark:text-slate-400">— native</span></p>
+						<p class="font-semibold mt-1">English <span class="font-normal text-sm text-slate-500 dark:text-slate-400">— communicative (B2)</span></p>
 					</div>
 				</div>
 			</div>
@@ -156,10 +156,10 @@ const description = "QA Engineer & Customer Enablement Specialist — 10+ years 
 		document.querySelectorAll(".toc-link").forEach((link) => {
 			const href = link.getAttribute("href");
 			if (href === `#${current}`) {
-				link.classList.add("text-primary-500", "font-medium");
+				link.classList.add("text-primary-700", "font-medium");
 				link.classList.remove("text-slate-500");
 			} else {
-				link.classList.remove("text-primary-500", "font-medium");
+				link.classList.remove("text-primary-700", "font-medium");
 				link.classList.add("text-slate-500");
 			}
 		});

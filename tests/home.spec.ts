@@ -65,7 +65,7 @@ test.describe("Home Page", () => {
 
 	test("Projects section renders 4 project cards", async ({ page }) => {
 		// Projects are rendered inside the .lg:max-w-5xl grid container
-		const grid = page.locator(".lg\\:max-w-5xl .grid");
+		const grid = page.locator(".lg\\:max-w-4xl .grid");
 		const cards = grid.locator("h2");
 		await expect(cards).toHaveCount(4);
 	});

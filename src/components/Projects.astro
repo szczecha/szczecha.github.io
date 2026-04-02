@@ -48,7 +48,7 @@ const projects = [
 				{project.icon && <div class="text-3xl">{project.icon}</div>}
 				<h2 class="font-semibold text-lg mb-2 ">
 					<div class="absolute -inset-x-3 md:-inset-x-5 -inset-y-4 rounded-lg opacity-0 scale-75 group-hover:scale-100 group-hover:opacity-100 bg-slate-50 z-0 transition dark:bg-slate-800" />
-					<a href={project.link} target={project.external ? "_blank" : undefined} rel={project.external ? "noopener" : undefined}>
+					<a href={project.link} target={project.external ? "_blank" : undefined} rel={project.external ? "noopener noreferrer" : undefined}>
 						<span class="absolute -inset-x-3 md:-inset-x-5 -inset-y-4 rounded-lg z-10" />
 						<span class="relative">{project.title}</span>
 					</a>

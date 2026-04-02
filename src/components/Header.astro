@@ -46,7 +46,7 @@ const navItems = [
 				<div class="ml-8">
 					<button
 						data-open-mobile-nav
-						class="md:hidden flex-inline items-center justify-center w-10 h-10"
+						class="md:hidden inline-flex items-center justify-center w-10 h-10"
 						aria-label="Open main navigation"
 					>
 						<Icon
@@ -65,13 +65,13 @@ const navItems = [
 	<div
 		data-mobile-nav-element
 		data-close-mobile-nav
-		class="hidden bg-black/50 fixed inset-0 z-60 backdrop-blur-xs transition opacity-0 starting:opacity-0"
+		class="hidden bg-black/50 fixed inset-0 z-[60] backdrop-blur-xs transition opacity-0 starting:opacity-0"
 	>
 	</div>
 
 	<div
 		data-mobile-nav-element
-		class="hidden fixed z-60 inset-x-4 top-8 p-6 bg-white dark:bg-slate-800 dark:ring-white/10 dark:text-slate-200 shadow-md rounded-2xl transition starting:opacity-0 starting:scale-85 starting:-translate-y-8"
+		class="hidden fixed z-[60] inset-x-4 top-8 p-6 bg-white dark:bg-slate-800 dark:ring-white/10 dark:text-slate-200 shadow-md rounded-2xl transition starting:opacity-0 starting:scale-85 starting:-translate-y-8"
 	>
 		<div class="flex justify-end">
 			<button data-close-mobile-nav aria-label="Close main navigation">
@@ -182,7 +182,6 @@ const navItems = [
 			}
 		});
 	}
-	initNavigation();
 	document.addEventListener("astro:page-load", () => {
 		initNavigation();
 	});

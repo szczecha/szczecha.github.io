@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
@@ -21,6 +24,7 @@
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.2",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/typography": "^0.5.16",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1"

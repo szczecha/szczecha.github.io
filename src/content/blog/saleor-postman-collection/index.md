@@ -2,7 +2,7 @@
 title: 'Saleor Postman Collection'
 description: "What started as my personal testing shortcut grew into Saleor's official public API collection — now listed on Postman's public directory and used by developers and agencies worldwide to get up and running with the Saleor GraphQL API."
 pubDate: '2026-03-20'
-heroImage: '../../../images/Postman_Saleor.jpg'
+heroImage: './Postman_Saleor.jpg'
 featured: true
 ---
 

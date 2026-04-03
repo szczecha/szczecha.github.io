@@ -1,17 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import ArticleCard from "./ArticleCard.astro";
+
+const { limit } = Astro.props;
+
 const featuredPosts = (
 	await getCollection("blog", ({ data }) => {
-		return data.featured === true;
+		return data.featured === true && data.draft !== true;
 	})
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+ .slice(0, limit);
 ---
 
 <div class="space-y-10">
 	{
-		featuredPosts.map((post, index) => (
-			<div class="">
+		featuredPosts.map((post) => (
+			<div>
 				<ArticleCard post={post} />
 			</div>
 		))

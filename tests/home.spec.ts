@@ -47,10 +47,10 @@ test.describe("Home Page", () => {
 		await expect(darkImage).toBeAttached();
 	});
 
-	test("Featured articles section renders at least one card", async ({
+	test("Recent article section renders at least one card", async ({
 		page,
 	}) => {
-		const section = page.locator("text=Featured articles").locator("..");
+		const section = page.locator("text=Recent article").locator("..");
 		await expect(section).toBeVisible();
 
 		const cards = page.locator("article");
@@ -63,10 +63,10 @@ test.describe("Home Page", () => {
 		await expect(cards).toHaveCount(8);
 	});
 
-	test("Projects section renders 4 project cards", async ({ page }) => {
-		// Projects are rendered inside the .lg:max-w-5xl grid container
+	test("Projects section renders 5 project cards", async ({ page }) => {
+		// Projects are rendered inside the .lg:max-w-4xl grid container
 		const grid = page.locator(".lg\\:max-w-4xl .grid");
 		const cards = grid.locator("h2");
-		await expect(cards).toHaveCount(4);
+		await expect(cards).toHaveCount(5);
 	});
 });

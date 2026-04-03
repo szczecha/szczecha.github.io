@@ -5,6 +5,7 @@ import heroImageDark from "../images/about-me-dark.jpg";
 import heroImageLight from "../images/about-me-light.jpg";
 import FeaturedArticles from "../components/articles/FeaturedArticles.astro";
 import Projects from "../components/Projects.astro";
+import DomainKnowledge from "../components/DomainKnowledge.astro";
 
 ---
 
@@ -44,14 +45,24 @@ import Projects from "../components/Projects.astro";
 		</div>
 	</div>
 
+	<!-- Projects -->
+	<div class="mx-auto lg:max-w-4xl my-16 sm:my-30">
+		<h2
+			class="text-2xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-10"
+		>
+			Projects
+		</h2>
+		<Projects />
+	</div>
+
 	<!-- Featured articles -->
 	<div class="mx-auto lg:max-w-4xl my-16 sm:my-30">
 		<h2
-			class="text-2xl sm:text-4xl font-bold tracking-tight mb-10 sm:mb-20"
+			class="text-2xl sm:text-4xl font-bold tracking-tight mb-5 sm:mb-10"
 		>
-			Featured articles
+			Recent article
 		</h2>
-		<FeaturedArticles />
+		<FeaturedArticles limit={1} />
 	</div>
 
 	<!-- Domain knowledge -->
@@ -59,59 +70,9 @@ import Projects from "../components/Projects.astro";
 		<h2 class="text-2xl sm:text-4xl font-bold tracking-tight mb-4">
 			Domain knowledge
 		</h2>
-		<p class="text-slate-500 dark:text-slate-400 mb-10 sm:mb-20">Industries I've worked in</p>
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">🛒</div>
-				<h3 class="font-semibold mb-2">E-commerce</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Saleor — headless, GraphQL-first commerce platform. Payments (Adyen, Stripe, Mollie), taxes (Avatax), orders, checkout, shipping. <br> Frisco — online grocery with home delivery.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">💳</div>
-				<h3 class="font-semibold mb-2">Fintech</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Vyze (acquired by Mastercard) — deferred payment platform connecting merchants with lenders.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">🏠</div>
-				<h3 class="font-semibold mb-2">IoT / Smart Home</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">React Native app for iOS & Android smart home control. Sole QA owning the full testing lifecycle.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">📦</div>
-				<h3 class="font-semibold mb-2">GS1 / Product Catalog</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Product catalogs and GTIN number verification systems — data integrity and standards compliance.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">⚖️</div>
-				<h3 class="font-semibold mb-2">Legal Tech</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">BigHand — technology solutions for legal professionals. Document workflows, data insights, and tools to increase value and efficiency for law firms.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">🚗</div>
-				<h3 class="font-semibold mb-2">Automotive</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">ERP systems and e-commerce parts catalogs for automotive industry. BMW motorcycle configurator and test ride booking.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">🚚</div>
-				<h3 class="font-semibold mb-2">Transport & Logistics</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Web application for TLS industry — driver information system for warehouse halls: loading docks, ramp counts, and loading/unloading requirements.</p>
-			</div>
-			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
-				<div class="text-2xl mb-3">🛡️</div>
-				<h3 class="font-semibold mb-2">Insurance</h3>
-				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Agent-facing application for insurance sales. Policy simulations, premium calculations, client data management, and document generation.</p>
-			</div>
-		</div>
+		<p class="text-slate-500 dark:text-slate-400 mb-5 sm:mb-10">Industries I've worked in</p>
+		<DomainKnowledge />
 	</div>
 
-	<!-- Projects -->
-	<div class="mx-auto lg:max-w-4xl my-16 sm:my-30">
-		<h2
-			class="text-2xl sm:text-4xl font-bold tracking-tight mb-10 sm:mb-20"
-		>
-			Projects
-		</h2>
-		<Projects />
-	</div>
 
 </BaseLayout>

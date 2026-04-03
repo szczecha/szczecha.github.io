@@ -1,0 +1,56 @@
+---
+const industries = [
+	{
+		icon: "🛒",
+		title: "E-commerce",
+		description: "Saleor — headless, GraphQL-first commerce platform. Payments (Adyen, Stripe, Mollie), taxes (Avatax), orders, checkout, shipping. Frisco — online grocery with home delivery.",
+	},
+	{
+		icon: "💳",
+		title: "Fintech",
+		description: "Vyze (acquired by Mastercard) — deferred payment platform connecting merchants with lenders.",
+	},
+	{
+		icon: "🏠",
+		title: "IoT / Smart Home",
+		description: "React Native app for iOS & Android smart home control. Sole QA owning the full testing lifecycle.",
+	},
+	{
+		icon: "📦",
+		title: "GS1 / Product Catalog",
+		description: "Product catalogs and GTIN number verification systems — data integrity and standards compliance.",
+	},
+	{
+		icon: "⚖️",
+		title: "Legal Tech",
+		description: "BigHand — technology solutions for legal professionals. Document workflows, data insights, and tools to increase value and efficiency for law firms.",
+	},
+	{
+		icon: "🚗",
+		title: "Automotive",
+		description: "ERP systems and e-commerce parts catalogs for automotive industry. BMW motorcycle configurator and test ride booking.",
+	},
+	{
+		icon: "🚚",
+		title: "Transport & Logistics",
+		description: "Web application for TLS industry — driver information system for warehouse halls: loading docks, ramp counts, and loading/unloading requirements.",
+	},
+	{
+		icon: "🛡️",
+		title: "Insurance",
+		description: "Agent-facing application for insurance sales. Policy simulations, premium calculations, client data management, and document generation.",
+	},
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+	{
+		industries.map((industry) => (
+			<div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5">
+				<div class="text-2xl mb-3">{industry.icon}</div>
+				<h3 class="font-semibold mb-2">{industry.title}</h3>
+				<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{industry.description}</p>
+			</div>
+		))
+	}
+</div>

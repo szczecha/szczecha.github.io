@@ -16,7 +16,9 @@ import { Icon } from "astro-icon/components";
 <script>
 	function initLightDarkToggle() {
 		document.querySelectorAll("[data-light-dark-toggle]").forEach((btn) => {
-			btn.addEventListener("click", (e) => {
+			if ((btn as HTMLElement).dataset.toggleBound === "true") return;
+			(btn as HTMLElement).dataset.toggleBound = "true";
+			btn.addEventListener("click", () => {
 				localStorage.theme =
 					localStorage.theme === "dark" ||
 					(!("theme" in localStorage) &&

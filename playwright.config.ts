@@ -7,7 +7,7 @@ export default defineConfig({
 	retries: process.env.CI ? 2 : 0,
 	reporter: [["html", { open: "never" }]],
 	use: {
-		baseURL: "http://localhost:4322",
+		baseURL: "http://localhost:4321",
 		trace: "on-first-retry",
 	},
 	projects: [
@@ -17,10 +17,9 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: "npm run preview",
-		url: "http://localhost:4322",
+		command: "npm run dev",
+		url: "http://localhost:4321",
 		reuseExistingServer: !process.env.CI,
 		stdout: "pipe",
 	},
 });
-``

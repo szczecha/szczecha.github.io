@@ -98,90 +98,103 @@ const navItems = [
 </header>
 
 <script>
-	function initNavigation() {
-		/*
-		 * Hide and show navigation on scroll
-		 */
+	let navigationListenersInitialized = false;
+	let lastScroll = 0;
+	let breakpointMdInPx = 0;
+
+	function getMobileNavElements() {
+		return document.querySelectorAll("[data-mobile-nav-element]");
+	}
+
+	function closeMobileNavigation() {
+		getMobileNavElements().forEach((element) => {
+			element.classList.add("hidden");
+			element.classList.remove(
+				"opacity-100",
+				"block",
+				"scale-100",
+				"translate-y-0",
+			);
+		});
+	}
+
+	function openMobileNavigation() {
+		getMobileNavElements().forEach((element) => {
+			element.classList.remove("hidden", "opacity-0");
+			element.classList.add(
+				"opacity-100",
+				"block",
+				"scale-100",
+				"translate-y-0",
+			);
+		});
+	}
+
+	function handleScroll() {
 		const body = document.body;
 		const scrollUp = "scroll-up";
 		const scrollDown = "scroll-down";
-		let lastScroll = 0;
 		const scrollThreshold = 50;
+		const currentScroll = window.scrollY;
 
-		window.addEventListener("scroll", () => {
-			const currentScroll = window.scrollY;
-			if (currentScroll <= 0) {
+		if (currentScroll <= 0) {
+			body.classList.remove(scrollUp);
+			return;
+		}
+
+		if (Math.abs(currentScroll - lastScroll) > scrollThreshold) {
+			if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
 				body.classList.remove(scrollUp);
-				return;
+				body.classList.add(scrollDown);
+			} else if (
+				currentScroll < lastScroll &&
+				body.classList.contains(scrollDown)
+			) {
+				body.classList.remove(scrollDown);
+				body.classList.add(scrollUp);
 			}
+			lastScroll = currentScroll;
+		}
+	}
 
-			// Only apply changes if the difference in scroll position exceeds the threshold
-			if (Math.abs(currentScroll - lastScroll) > scrollThreshold) {
-				if (
-					currentScroll > lastScroll &&
-					!body.classList.contains(scrollDown)
-				) {
-					// down
-					body.classList.remove(scrollUp);
-					body.classList.add(scrollDown);
-				} else if (
-					currentScroll < lastScroll &&
-					body.classList.contains(scrollDown)
-				) {
-					// up
-					body.classList.remove(scrollDown);
-					body.classList.add(scrollUp);
-				}
-				lastScroll = currentScroll;
-			}
-		});
+	function handleResize() {
+		if (window.innerWidth > breakpointMdInPx) {
+			closeMobileNavigation();
+		}
+	}
 
-		/*
-		 * Mobile navigation
-		 */
-		const mobileNavElements = document.querySelectorAll(
-			"[data-mobile-nav-element]",
-		);
-
-		// close mobile navigation
-		document.querySelectorAll("[data-close-mobile-nav]").forEach((btn) => {
-			btn.addEventListener("click", (e) => {
-				mobileNavElements.forEach((element) => {
-					element.classList.add("hidden");
-				});
-			});
-		});
-
-		// open mobile navigation
-		document.querySelectorAll("[data-open-mobile-nav]").forEach((btn) => {
-			btn.addEventListener("click", (e) => {
-				mobileNavElements.forEach((element) => {
-					element.classList.remove("hidden");
-					element.classList.add(
-						"opacity-100",
-						"block",
-						"scale-100",
-						"translate-y-0",
-					);
-				});
-			});
-		});
-
-		// close mobile navigation on window resize
+	function updateBreakpoint() {
 		const styles = getComputedStyle(document.documentElement);
 		const breakpointMd = styles.getPropertyValue("--breakpoint-md");
 		const breakpointMdInRem = parseFloat(breakpointMd.replace("rem", ""));
 		const rootFontSizeInPx = parseFloat(styles.fontSize);
-		const breakpointMdInPx = breakpointMdInRem * rootFontSizeInPx;
+		breakpointMdInPx = breakpointMdInRem * rootFontSizeInPx;
+	}
 
-		window.addEventListener("resize", () => {
-			if (window.innerWidth > breakpointMdInPx) {
-				mobileNavElements.forEach((element) => {
-					element.classList.add("hidden");
-				});
-			}
+	function initNavigation() {
+		updateBreakpoint();
+
+		if (!navigationListenersInitialized) {
+			window.addEventListener("scroll", handleScroll);
+			window.addEventListener("resize", handleResize);
+			navigationListenersInitialized = true;
+		}
+
+		// close mobile navigation
+		document.querySelectorAll("[data-close-mobile-nav]").forEach((btn) => {
+			if ((btn as HTMLElement).dataset.mobileNavCloseBound === "true") return;
+			(btn as HTMLElement).dataset.mobileNavCloseBound = "true";
+			btn.addEventListener("click", () => closeMobileNavigation());
+		});
+
+		// open mobile navigation
+		document.querySelectorAll("[data-open-mobile-nav]").forEach((btn) => {
+			if ((btn as HTMLElement).dataset.mobileNavOpenBound === "true") return;
+			(btn as HTMLElement).dataset.mobileNavOpenBound = "true";
+			btn.addEventListener("click", () => openMobileNavigation());
 		});
 	}
+
 	document.addEventListener("astro:page-load", () => {
 		initNavigation();
 	});

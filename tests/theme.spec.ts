@@ -65,7 +65,7 @@ test.describe("Dark / Light Theme Toggle", () => {
 		await expect(page.locator("html")).toHaveClass(/dark/);
 	});
 
-	test("2.4 light theme persists after navigating to another page", async ({
+	test("Light theme persists after navigating to another page", async ({
 		page,
 	}) => {
 		// Ensure light mode

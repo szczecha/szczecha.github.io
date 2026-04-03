@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+	data-light-dark-toggle
+	class="inline-flex items-center justify-center w-8 h-8 transition hover:text-primary-700 dark:hover:text-primary-300"
+	aria-label="Toggle light/dark theme"
+>
+	<Icon
+		name="heroicons:moon-solid"
+		class="hidden dark:inline-block w-5 h-5"
+	/>
+	<Icon name="heroicons:sun-solid" class="inline-block dark:hidden w-5 h-5" />
+</button>
+<script>
+	function initLightDarkToggle() {
+		document.querySelectorAll("[data-light-dark-toggle]").forEach((btn) => {
+			if ((btn as HTMLElement).dataset.toggleBound === "true") return;
+			(btn as HTMLElement).dataset.toggleBound = "true";
+			btn.addEventListener("click", () => {
+				localStorage.theme =
+					localStorage.theme === "dark" ||
+					(!("theme" in localStorage) &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches)
+						? "light"
+						: "dark";
+				window.setColorScheme();
+			});
+		});
+	}
+
+	document.addEventListener("astro:page-load", () => {
+		initLightDarkToggle();
+	});
+</script>

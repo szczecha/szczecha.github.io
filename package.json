@@ -1,0 +1,34 @@
+{
+  "name": "popular-pegasi",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:a11y": "playwright test tests/accessibility.spec.ts"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.4.0",
+    "@fontsource-variable/roboto": "^5.2.5",
+    "@fontsource-variable/space-grotesk": "^5.2.7",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@iconify-json/heroicons": "^1.2.2",
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/typography": "^0.5.16",
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1"
+  }
+}

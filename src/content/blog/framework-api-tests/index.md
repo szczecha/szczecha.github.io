@@ -1,7 +1,7 @@
 ---
-title: 'From Strategy to Tests: Bootstrapping the Project and Writing the API Layer'
-description: "The strategy was done, the stack was picked. This post covers what came next: scaffolding the project, wiring up graphql-codegen, writing the GraphQL API tests, and shipping a CI workflow."
-pubDate: '2026-04-03'
+title: 'Creating API test with Claude'
+description: "The strategy was done, the stack was picked. This post covers what came next: scaffolding the project, wiring up graphql-codegen, writing the GraphQL API tests, and shipping a CI workflow. "
+pubDate: '2026-04-06'
 heroImage: './26_SummaryOfDay.png'
 featured: true
 ---
@@ -29,11 +29,9 @@ featured: true
 
 ## Setting Up the Foundation
 
-With `QA_STRATEGY.md`, `ADR-001`, and `CLAUDE.md` committed, I switched Claude Code from chat mode to the terminal and asked it to scaffold the project.
+With `QA_STRATEGY.md`, `ADR-001`, and `CLAUDE.md` committed, I switched from chat mode to the terminal and asked Claude to start working implementation.
 
-![Switching Claude Code from chat to terminal for project scaffolding](./11_SwitchToTerminal.png)
-
-I gave it a single prompt: generate the full directory structure, `playwright.config.ts`, `codegen.ts`, `package.json`, `tsconfig.json`, `.env.example`, and `.gitignore`. Everything according to what was already in `CLAUDE.md`.
+I gave it a single prompt: generate the full directory structure, with `playwright.config.ts`, `package.json` and `.env.example` everything according to what was already in `CLAUDE.md`.
 
 ![Prompting Claude Code to scaffold the full project structure](./12_PromptForProjectStructure.png)
 
@@ -41,15 +39,17 @@ What came back in 44 seconds was a working skeleton: `tests/api/`, `tests/ui/`, 
 
 ![Generated project structure — tests/, lib/, playwright.config.ts, codegen.ts all in place](./13_StructureGenerated.png)
 
-Then the next steps in order: install dependencies, install the browser binary, set up the `.env` with Saleor Cloud sandbox values.
+Then the next steps in order: install dependencies, install the browser binary.
 
 ![Running npm install](./14_NpmInstall.png)
 
 ![Running npx playwright install chromium](./15_PlaywrightInstall.png)
 
+Before running `codegen` I had to set up the `.env` with Saleor Cloud sandbox values.
+
 ![Populating .env from .env.example with Saleor Cloud values](./16_SetEnv.png)
 
-The last setup step was `npm run codegen`. It points at the live Saleor Cloud schema and generates TypeScript types into `lib/generated/`. The first run hit an error — a schema field the config referenced had changed.
+The last setup step was `npm run codegen`. It points at the live Saleor Cloud schema and generates TypeScript types into `lib/generated/`. The first run hit an error — a schema field the config referenced had changed. 
 
 ![graphql-codegen failing on first run due to a deprecated schema field](./17_CodegenError.png)
 
@@ -63,96 +63,48 @@ From here on, a typo in a GraphQL query is a compile error, not a test failure a
 
 ### Products
 
-The first test was a product browsing scenario: anonymous user, USD storefront channel, querying the product list and a single product detail with variant pricing. I gave Claude the prompt, it read `CLAUDE.md` before writing a single line.
+The first test was a product browsing scenario: anonymous user, USD storefront channel, querying the product list and a single product detail with variant pricing.
 
 ![Prompting Claude Code to write the first API test — anonymous product browsing](./19_FirstAPITestPrompt.png)
 
-The client in `lib/graphql-client.ts` is a thin wrapper around `graphql-request`. Typed variables, typed response, no Apollo, no runtime state — exactly what the ADR specified. Each query lives in its own `.graphql` file; codegen picks it up automatically.
+Claude generated the client and the test, but flagged one thing upfront: products query that can be used in public storefront requires a channel slug on every query — without it, no products are returned. It added `SALEOR_CHANNEL_USD` to `.env.example` and read it from the environment in the test and added fallback if value is not set.
 
 ![Claude Code generating the products test and graphql-client wrapper](./20_FirstAPITestWip.png)
 
-The tests passed on the first run.
-
 ![Products test passing — product list query, product detail query, variant pricing](./21_FirstAPITestresult.png)
 
-One thing the strategy made explicit: HTTP 200 doesn't mean success in GraphQL. Every test asserts `data.X.errors` is empty, not just that the response arrived.
+One habit worth keeping when working with an LLM: commit frequently. It's easy to lose a working state when iterating. I committed after each meaningful step and used the built-in source control to generate commit messages.
+
+![Commit frequently after each working change](./21_CommitFrequently.png)
 
 ### Checkout
 
-The checkout flow was the first place I had to push back on Claude's output. The default scaffold ran checkout steps in parallel — `checkoutCreate`, `checkoutLinesAdd`, `checkoutEmailUpdate`, delivery selection, `transactionInitialize`, `checkoutComplete` — and they failed because each step depends on the ID from the previous one.
+The checkout flow required more work. To get useful tests, I had to describe exactly which mutations are needed and in what order — covering every stage of the purchase process: `checkoutCreate` → `checkoutLinesAdd` → `checkoutEmailUpdate` → update addresses → delivery selection → `transactionInitialize` → `checkoutComplete`. On top of that, I had to make sure the test environment had a test payment app installed — without it, the transaction step has nowhere to route.
 
-![Checkout tests failing due to parallel execution — steps depending on previous IDs](./23_CheckoutTestsFailed.png)
+The second problem was execution order. Claude ran the steps in parallel, and they failed because some mutation depends on the ID returned by the previous one.
 
-I told Claude to switch the checkout tests to serial mode. That's `test.describe.serial` in Playwright — each step runs in sequence within the describe block, passing state forward.
+Claude caught this one on its own — it switched the checkout tests to `test.describe.serial`, so each step runs in sequence within the describe block, passing state forward.
 
 ![Checkout tests refactored to serial execution mode](./23_CheckoutTestSerial.png)
 
-The second checkout scenario — click & collect vs. standard shipping — required domain knowledge. Saleor's click & collect delivery doesn't go through the shipping methods list; it uses a warehouse directly. Claude got the structure right but picked the wrong delivery mutation on the first attempt.
+The next scenario was click & collect. I pointed out which fields held the warehouse ID and that it passes through the same `checkoutDeliveryMethodUpdate` mutation — domain knowledge that's worth putting in the prompt — and Claude produced the right test from that.
 
-![Second checkout scenario — domain knowledge required to pick the correct delivery mutation](./24_SecondCheckoutScenarioDomain knowledge.png)
+![Second checkout scenario — domain knowledge required to pick the correct delivery mutation](./24_SecondCheckoutScenarioDomainKnowledge.png)
 
-That's the pattern that repeated: Claude handles the boilerplate and wiring correctly; I corrected the business logic where it needed Saleor-specific knowledge.
+Once the checkout scenarios were done, I asked Claude to do some housekeeping — move shared queries to a separate file.
 
-With checkout covered, I asked Claude to add more product query coverage — filtering by category, brand, and material, checking that results respect the filter.
-
-![Prompting Claude Code to add filtered product tests — category, brand, material](./25_NewProductsTestsPrompt.png)
-
-One consistent thing throughout: Claude reminded me to commit frequently. It's right.
-
-![Claude Code prompting to commit frequently after each working change](./21_CommitFrequently.png)
-
-One environment issue worth noting: Playwright's default network policy blocked fetches to the Saleor Cloud domain. Needed an explicit `allowedDomains` in `playwright.config.ts` for the API project — a one-liner, but not obvious from the error message.
-
-![playwright.config.ts — allowedDomains required for API fetch requests](./22_AllowedFetchDomains.png)
-
-## Layer 2: Dashboard UI Tests (What's Next)
-
-The UI layer follows one rule: tests don't create their own data through the browser unless creating that data *is* the test. Everything else is seeded via the API in `beforeAll` — the ID comes back, gets passed into the test scope, and the browser starts on a known state.
-
-That pattern eliminates an entire category of flakiness. It also means selectors stay stable: `data-testid` and `aria-*` attributes only. MUI class names change on minor version bumps — they're not a contract.
-
-`page.waitForResponse` on GraphQL mutations, not DOM transitions. A spinner disappearing doesn't confirm the mutation succeeded.
-
-## Layer 3: Accessibility (What's Next)
-
-`@axe-core/playwright` runs inside the same Playwright process and inherits `storageState` from the UI layer. No separate login, no reimplemented auth flow. That's the only reason it can scan auth-gated pages like the Dashboard product creation form — which is exactly where the most complex UI lives.
-
-"0 critical axe violations" is a specific claim: no WCAG 2.1 AA violations at the `critical` or `serious` level. Not "accessible." A defined, testable threshold.
 
 ## CI with GitHub Actions
 
-The workflow runs in three stages: API → UI → A11y. Each depends on the previous — if the API layer has P0 failures, there's no point running UI tests against broken data.
+With a few API tests working locally, I wanted to get them running in CI. I asked Claude to generate a GitHub Actions workflow with caching and it handled most of it well. 
 
-P0 failures block merge. P1–P3 are advisory — they run, they report, they don't break the build. That maps directly to the priority table in `QA_STRATEGY.md`.
-
-Two details worth calling out: `~/.cache/ms-playwright` is cached between runs. The browser binary is 300 MB — re-downloading it on every workflow run is avoidable waste. And every job uses `--pass-with-no-tests`. The UI and A11y directories are currently empty placeholders; without that flag, Playwright exits with a non-zero code on empty test suites and breaks CI before there's anything to test.
-
-## How AI Accelerated This
-
-The strategy document became the AI's instruction set. Every Claude Code session started by reading `CLAUDE.md` — so the tool constraints, layer separation rules, and selector conventions were enforced automatically without me repeating them.
-
-AI helped most with: boilerplate (the scaffolding, the client wrapper, the CI YAML), consistency (applying the same pattern across every test file), and schema navigation (finding the right codegen config against a live introspection endpoint).
-
-Human judgment was essential for: test priorities (what's P0 vs P1 is a business call, not a technical one), the checkout delivery variants (knowing that click & collect uses a warehouse ID, not a shipping method), and data ownership — deciding that UI tests never create their own test data required understanding what makes tests flaky, not just what makes them compile.
-
-## Lessons Learned
-
-**Start with the strategy doc.** It becomes the AI's instruction set via `CLAUDE.md`. Without it, every session drifts.
-
-**Strict layer boundaries prevent flakiness.** The rule "UI tests don't create data through the browser" sounds obvious — but without it written down, it won't hold under pressure to ship tests faster.
-
-**Codegen setup cost is real but front-loaded.** The first run error took time to debug. After that, every schema-breaking change surfaced at compile time, not in CI.
-
-**The "≤ 2 files per new test" metric.** A new test should touch at most two files: the test file and, if needed, one shared helper. If it takes more than that, the test is doing too much or the structure is fighting you.
+One issue came up: each layer was running the full Playwright setup — all projects — instead of just its own. That was a dependency configuration problem in `playwright.config.ts`, so I removed the dependencies for now. The other fix was adding `--pass-with-no-tests` to every job. The UI and A11y directories are currently empty placeholders, and without that flag Playwright exits with a non-zero code on an empty test suite, which breaks CI before there's anything to test.
 
 ## Where It Stands
 
-The API layer is passing. Nine tests covering product browsing and the full checkout flow — including both delivery variants — run in CI on every push. The UI and A11y layers are scaffolded, with placeholder directories and the config wired up. The next session starts with a working environment, not a blank slate.
+The API layer is passing. 23 tests across four areas: simple product queries, advanced product queries with attribute filtering (category, brand, material), checkout with standard delivery, and checkout with click & collect. All running in CI on every push.
 
-The POC definition of done: 9 tests passing in CI, a README sufficient for a new developer to add a test in under 30 minutes. The first part is done.
+I asked Claude to update `CLAUDE.md` with what we'd established in the session — so the next session picks up from the same baseline. Then we updated the project README, and finally I asked for a session summary. I was genuinely surprised by how much got done in a single afternoon:
 
----
+![Claude Code session summary](./26_SummaryOfDay.png)
 
-Claude's summary of the full session — from strategy through scaffolding to passing API tests:
-
-![Claude Code session summary — three-layer framework POC built in one session, ~1,600 lines of code, P0 checkout and product tests passing](./26_SummaryOfDay.png)

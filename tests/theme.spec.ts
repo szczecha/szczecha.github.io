@@ -118,30 +118,10 @@ test.describe("Dark / Light Theme Toggle", () => {
 		await context.close();
 	});
 
-	test("Sun icon visible in light mode", async ({
+	test("Moon icon visible in light mode", async ({
 		page,
 	}) => {
 		await expect(page.locator("html")).not.toHaveClass(/dark/);
-
-		const sunIcon = page.locator(
-			'[data-light-dark-toggle] svg[data-icon="heroicons:sun-solid"]',
-		);
-		const moonIcon = page.locator(
-			'[data-light-dark-toggle] svg[data-icon="heroicons:moon-solid"]',
-		);
-
-		await expect(sunIcon).toBeVisible();
-		await expect(moonIcon).toBeHidden();
-	});
-
-	test("Moon icon visible in dark mode", async ({
-		page,
-	}) => {
-		await page.evaluate(() => {
-			localStorage.theme = "dark";
-			window.setColorScheme();
-		});
-		await expect(page.locator("html")).toHaveClass(/dark/);
 
 		const moonIcon = page.locator(
 			'[data-light-dark-toggle] svg[data-icon="heroicons:moon-solid"]',
@@ -152,5 +132,25 @@ test.describe("Dark / Light Theme Toggle", () => {
 
 		await expect(moonIcon).toBeVisible();
 		await expect(sunIcon).toBeHidden();
+	});
+
+	test("Sun icon visible in dark mode", async ({
+		page,
+	}) => {
+		await page.evaluate(() => {
+			localStorage.theme = "dark";
+			window.setColorScheme();
+		});
+		await expect(page.locator("html")).toHaveClass(/dark/);
+
+		const sunIcon = page.locator(
+			'[data-light-dark-toggle] svg[data-icon="heroicons:sun-solid"]',
+		);
+		const moonIcon = page.locator(
+			'[data-light-dark-toggle] svg[data-icon="heroicons:moon-solid"]',
+		);
+
+		await expect(sunIcon).toBeVisible();
+		await expect(moonIcon).toBeHidden();
 	});
 });

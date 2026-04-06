@@ -1,5 +1,5 @@
 ---
-title: 'Creating API test with Claude'
+title: 'Creating API tests with Claude'
 description: "The strategy was done, the stack was picked. This post covers what came next: scaffolding the project, wiring up graphql-codegen, writing the GraphQL API tests, and shipping a CI workflow. "
 pubDate: '2026-04-06'
 heroImage: './26_SummaryOfDay.png'

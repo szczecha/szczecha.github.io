@@ -1,8 +1,7 @@
 ---
-title: 'A Year in the CX Hat: What I Learned'
+title: 'A Year Wearing the Customer Enablement Hat'
 description: "A year ago I was offered a move to CX. Despite doubts, I rose to the challenge — and I'm a better QA because of it."
-pubDate: '2026-04-09'
-
+pubDate: '2026-04-10'
 featured: true
 ---
 
@@ -30,11 +29,11 @@ As a QA, you test what's planned. New features, bug fixes, releases.
 
 In CX, you get questions no test case could ever predict.
 
-How do I configure a bundle product?
-How do I override price if goods are damaged?
-How do I set up payment on delivery?
-How do I import orders from a legacy system?
-How do I build an integration between our ERP system and Saleor?
+- How do I configure a bundle product?
+- How do I override price if goods are damaged?
+- How do I set up payment on delivery?
+- How do I import orders from a legacy system?
+- How do I build an integration between our ERP system and Saleor?
 
 These aren't documentation questions. They're real-world questions. And that's exactly why it's never boring.
 I didn’t just learn how to answer complex questions — I learned how to understand what problem is actually being asked.
@@ -53,16 +52,6 @@ And here's the shift that changed how I write: **the simpler the language, the b
 
 ---
 
-## Pre-sales presentations
-
-Shortly after joining CX, I started creating pre-sales presentations — materials to help clients decide whether to launch on the platform.
-
-And something unexpected happened: To explain the architecture clearly to a client, I had to understand it better than I thought I did. Not just "how it works" — I already knew that. But "how it works in the context of a specific business goal, for a new project." How to connect apps, webhooks, and external integrations so they directly answer what the client actually needs.
-
-Testing teaches you how a system behaves under pressure. Pre-sales taught me why those behaviors matter to someone just starting out.
-
----
-
 ## First onboarding
 
 My first solo onboarding came around the 10-month mark. End-to-end: from the initial walkthrough, through designing the integration architecture (storefront ↔ Saleor ↔ third-party), and eventually going live.
@@ -76,16 +65,16 @@ The client didn't eat me alive — quite the opposite, they appreciated the tech
 
 ## What I miss
 
-Predictability.
+**Predictability**
 Even though onboarding usually involves the same configuration elements, every use case is different.
-Customer questions circle similar themes but are never quite 1-to-1.
+Customer questions cover similar topics but are never quite 1-to-1.
 Some weeks there's a flood of questions; other weeks, nothing.
 
-Measurability.
+**Measurability**
 In QA you know if a test passed or failed. You have coverage. You have CI. You have numbers that tell you how things are.
 Is onboarding moving faster than it was a month ago? Does the new guide actually reduce support volume? — these are things that still need clearer metrics.
 
-Testing.
+**Testing**
 In CX I often reproduce problems customers report or explore how to achieve a use case with our API, but sometimes I miss the pure exploration of breaking things and the satisfaction of knowing what we shipped is solid.
 
 ---
@@ -96,7 +85,7 @@ A year in CX left concrete things that will change how I approach QA.
 
 - Deeper understanding of e-commerce domain
 
-- Thinking about solving use cases with limited tools — finding workarounds
+- Finding workarounds — thinking about solving use cases with limited tools.
 
 - Better prioritization — as a QA I wasn't always good at deciding what needs fixing yesterday versus what can wait. Working with clients taught me what actually matters. It shifts depending on what you sell and how. Some bugs will live in the backlog forever because they're in areas we rarely touch.
 

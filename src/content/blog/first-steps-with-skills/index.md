@@ -23,7 +23,7 @@ featured: true
 
 ## The FOMO of Too Many Tools
 
-It's getting harder to keep up. Every week there's a new AI tool, a new feature, a new thing you're "supposed" to know about. I kept hearing about skills — at work, on Discord, YouTube titles all over the place — but I had no idea what it actually was. How to use it. If I even needed it.
+It's getting harder to keep up. Every week there's a new AI tool, a new feature, a new thing you're "supposed" to know about. I kept hearing about skills — at work, on Discord, YouTube titles all over the place — but I had no idea what they actually were. How to use them. If I even needed them.
 
 
 ## How I Actually Tackled It
@@ -32,7 +32,7 @@ Here's what I know about myself: I don't like pretending I understand things, an
 
 **I asked Claude directly: "What are skills and how can I use them in my daily work?"**
 
-That's it. No overthinking, no FOMO-driven research spiral. Just straight-up question.
+That's it. No overthinking, no FOMO-driven research spiral. Just a straight-up question.
 
 I asked in chat and got info about built-in skills for creating documents, working on PDFs, and building UIs.
 
@@ -56,7 +56,7 @@ Claude asked me some clarifying questions.
 
 ![Claude asking clarifying questions about the skill's purpose and use cases](./ClaudeQuestionWidget.png)
 
-Then asked me to share the template. Claude even tested the skill with a sample question from memory.
+Claude then asked me to share the template. Claude even tested the skill with a sample question from memory.
 
 ![Claude testing the newly created skill with a sample question before saving](./ClaudeTestSkill.png)
 
@@ -70,13 +70,8 @@ But that wasn't the end. At this point, the skill only worked in that session. T
 
 If you want the skill available in Claude Code itself, you need to add a folder and move the skill.md file there.
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-
 ![Creating a skills folder in the Claude Code project directory](./SkillsFolder.png)
-
 ![Moving the skill.md file into the skills folder to register it in Claude Code](./MoveSkillToFolder.png)
-
-</div>
 
 
 ## I Built More
@@ -93,7 +88,7 @@ Example for explain code skill:
 ![The skill in action — answering specific questions about code](./SkillInAction.png)
 ![Examples of skills in action — testing tips, code explanations, more](./TestingTips.png)
 
-Once I had that first skills working, something became obvious. **Skills are just prompts you don't want to rewrite.**
+Once I had my first few skills working, something became obvious. **Skills are just prompts you don't want to rewrite.**
 
 If you find yourself:
 - Asking Claude the same question over and over (with different inputs)
